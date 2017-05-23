@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>echo &quot;testing 2&quot;
-cp /home/ashutosh/sample.json /var/lib/jenkins/workspace/scm_test/report/</command>
+cp /var/lib/jenkins/workspace/scm_test/sample.json /var/lib/jenkins/workspace/scm_test/report/sample.json</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
