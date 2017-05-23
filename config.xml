@@ -16,7 +16,13 @@
   <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
   <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
   <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
-  <jdks/>
+  <jdks>
+    <jdk>
+      <name>java version 1.7</name>
+      <home>/usr/lib/jvm/jre-1.7.0-openjdk</home>
+      <properties/>
+    </jdk>
+  </jdks>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
   <clouds/>
