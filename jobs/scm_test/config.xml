@@ -19,7 +19,7 @@
   <publishers>
     <org.jenkinsci.plugins.cucumbertrendsreport.publish.CucumberTrendReportBuilder plugin="cucumber-trends-report@1.3">
       <unstableThreshold></unstableThreshold>
-      <reportFolder>/report/</reportFolder>
+      <reportFolder>report/</reportFolder>
       <jsonReportName>sample.json</jsonReportName>
     </org.jenkinsci.plugins.cucumbertrendsreport.publish.CucumberTrendReportBuilder>
   </publishers>
