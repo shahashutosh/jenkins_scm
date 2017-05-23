@@ -33,8 +33,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd $WORKSPACE/end_to_end/
-/home/ec2-user/.rvm/scripts/rvm use ruby-1.9.3-p385@hcah
+      <command>#cd $WORKSPACE/end_to_end/
+#/home/ec2-user/.rvm/scripts/rvm use ruby-1.9.3-p385@hcah
 bundle install</command>
     </hudson.tasks.Shell>
   </builders>
