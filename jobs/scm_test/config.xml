@@ -9,50 +9,7 @@
       <displayName></displayName>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
   </properties>
-  <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.6">
-    <scms>
-      <hudson.plugins.git.GitSCM plugin="git@3.3.0">
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
-          <hudson.plugins.git.UserRemoteConfig>
-            <url>git@github.com:healthcareathome/end_to_end.git</url>
-          </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
-          <hudson.plugins.git.BranchSpec>
-            <name>lilly_user_journey</name>
-          </hudson.plugins.git.BranchSpec>
-        </branches>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <submoduleCfg class="list"/>
-        <extensions>
-          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-            <relativeTargetDir>end_to_end</relativeTargetDir>
-          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        </extensions>
-      </hudson.plugins.git.GitSCM>
-      <hudson.plugins.git.GitSCM plugin="git@3.3.0">
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
-          <hudson.plugins.git.UserRemoteConfig>
-            <url>git@github.com:healthcareathome/hcah_client.git</url>
-          </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
-          <hudson.plugins.git.BranchSpec>
-            <name>factories_changes</name>
-          </hudson.plugins.git.BranchSpec>
-        </branches>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <submoduleCfg class="list"/>
-        <extensions>
-          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-            <relativeTargetDir>hcah_client</relativeTargetDir>
-          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        </extensions>
-      </hudson.plugins.git.GitSCM>
-    </scms>
-  </scm>
+  <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -61,15 +18,25 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd $WORKSPACE/end_to_end/
+      <command>#cd $WORKSPACE/end_to_end/
 #/home/ec2-user/.rvm/scripts/rvm use ruby-1.9.3-p385@hcah
-bundle install
+#bundle install
 
-cd $WORKSPACE/hcah_client/
+#cd $WORKSPACE/hcah_client/
 #/home/ec2-user/.rvm/scripts/rvm use ruby-1.9.3-p385@hcah
-bundle install</command>
+#bundle install
+
+mkdir report;
+cp sample.json report/;
+echo &quot;copied&quot;</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <org.jenkinsci.plugins.cucumbertrendsreport.publish.CucumberTrendReportBuilder plugin="cucumber-trends-report@1.3">
+      <unstableThreshold>80</unstableThreshold>
+      <reportFolder>report</reportFolder>
+      <jsonReportName>sample.json</jsonReportName>
+    </org.jenkinsci.plugins.cucumbertrendsreport.publish.CucumberTrendReportBuilder>
+  </publishers>
   <buildWrappers/>
 </project>
